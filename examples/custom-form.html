@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<!--[if lt IE 9]>
+<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<![endif]-->
+<script src="../libs/a.js"></script><!-- es5-shim and $$, $A(toArray) functions -->
+<!--[if lt IE 8]>
+<script src="../libs/a.ielt8.js"></script>
+<![endif]-->
+
+<script src="../__SRC/formii.js"></script>
+
+<link rel="stylesheet" href="css/a.css" />
+
+<script>
+
+window.addEventListener("load", function() {
+	formii.init($$, $A);
+}, false);
+</script>
+
+</head>
+
+<body>
+
+<style>
+.custom-form {
+	padding: 20px;
+}
+.custom-form label {
+	display: block;
+}
+.custom-form label.select {
+	border: 1px solid green;
+}
+.custom-form label input {
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid gray;
+}
+.custom-form label input:focus, .custom-form label input:active {
+	border: 1px solid #3377A2;
+	outline: 4px solid yellow;
+}
+.custom-form label.checkbox {
+	display: inline-block;
+	width: 64px;
+	height: 64px;
+	position: relative;
+	border: 3px solid gray;
+}
+.custom-form label.checkbox.checked {
+	border: 3px solid #3377A2;
+}
+
+.custom-form label.radio {
+	display: inline-block;
+	width: 64px;
+	height: 64px;
+	position: relative;
+	border: 3px solid gray;
+	line-height: 64px;
+	vertical-align: middle;
+	
+	text-align: center;
+	
+	-webkit-transition: all 0.3s ease-out;  /* Saf3.2+, Chrome */
+       -moz-transition: all 0.3s ease-out;  /* FF4+ */
+        -ms-transition: all 0.3s ease-out;  /* IE10? */
+         -o-transition: all 0.3s ease-out;  /* Opera 10.5+ */
+            transition: all 0.3s ease-out;  
+}
+.custom-form label.radio img, .custom-form label.radio input, .custom-form label.checkbox input, .custom-form label.checkbox img,
+.custom-form label.checkbox.checked:before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 64px;
+	height: 64px;
+	z-index: 98;
+}
+.custom-form label.checkbox.checked:before {
+	/*content: "✔";
+	font-size: 30px;*/
+	content: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjxzdmcKICAgeG1sbnM6c3ZnPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIgogICB2ZXJzaW9uPSIxLjAiCiAgIHdpZHRoPSIyOCIKICAgaGVpZ2h0PSIyOCIKICAgaWQ9ImNoZWNrYm94Ij4KICA8ZGVmcwogICAgIGlkPSJkZWZzNyIgLz4KICA8cGF0aAogICAgIGQ9Ik0gMTEuOTQsMjAuMjUgOC43LDEzLjY0IEMgNy41ODM2MDA4LDExLjM2MjQwOCA4Ljc0NDk1MjQsMTEuOTU0OTQyIDkuMjM0OTYzLDEyLjY3MDAxMSAxMi44MDI5NzgsMTcuNDYxMzg2IDExLjc4MTA3NiwxOS4zMDk2MjQgMTQuNzUsMTMuMjQgTCAyMC43MDcsMS4wNjE2IEMgMjEuMTk3NDYsMC4wNDI0ODY4IDIxLjU2MzQ3NSwxLjA1NTc4IDIxLjA0OSwyLjI3IGwgLTYuNDg4LDE3LjA3IGMgLTAuMzgxNTQ5LDEuMDAzODYxIC0xLjc4NiwyLjA1IC0yLjYyMSwwLjkgbCAtMTBlLTQsMC4wMDUgMTBlLTQsMC4wMDUgeiIKICAgICBpZD0idGljayIKICAgICBzdHlsZT0iZmlsbDojNDQwMDAwIiAvPgo8L3N2Zz4K);
+	display: block;
+	z-index: 100;
+}
+.custom-form label.radio img, .custom-form label.checkbox img {
+	z-index: 99;
+}
+.custom-form label.radio.checked {
+	width: 164px;
+	padding-left: 70px;
+	border: 3px solid #3377A2;
+}
+</style>
+
+<form class=custom-form>
+	<label>
+		<p>Some text value</p>
+		<input>
+	</label>
+	<label>
+		<p>Some text value</p>
+		<input>
+	</label>
+	<fieldset>
+		<legend>Select Toy</legend>
+		<label class="checkbox">
+			<img src="i/some1.jpg">
+			<input type="checkbox">
+		</label>
+		<label class="checkbox">
+			<img src="i/some2.jpg">
+			<input type="checkbox">
+		</label>
+		<label class="checkbox">
+			<img src="i/some3.jpg">
+			<input type="checkbox">
+		</label>
+	</fieldset>
+	<fieldset>
+		<legend>Choose Toy</legend>
+		<label class="radio">
+			<img src="i/some1.jpg">
+			<p>some 1</p>
+			<input checked type="radio" name="oneToy">
+		</label>
+		<label class="radio">
+			<img src="i/some2.jpg">
+			<p>some 2</p>
+			<input type="radio" name="oneToy">
+		</label>
+		<label class="radio">
+			<img src="i/some3.jpg">
+			<p>some 3</p>
+			<input type="radio" name="oneToy">
+		</label>
+
+
+
+
+
+
+
+
+
+
+
+	

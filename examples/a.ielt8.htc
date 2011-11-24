@@ -1,0 +1,45 @@
+<PUBLIC:COMPONENT lightWeight="true">
+<PUBLIC:PROPERTY NAME="classList" GET="getClassList" />
+<PUBLIC:PROPERTY NAME="attributes" GET="getAttributes" />
+<PUBLIC:PROPERTY NAME="firstElementChild" GET="getFirstElementChild" />
+<PUBLIC:PROPERTY NAME="lastElementChild" GET="getLastElementChild" />
+<PUBLIC:PROPERTY NAME="nextElementSibling" GET="getNextElementSibling" />
+<PUBLIC:PROPERTY NAME="previousElementSibling" GET="getPreviousElementSibling" />
+<SCRIPT>
+/*@requared window._ielt8_Element_proto = {
+ *  getclassList : <Function>,
+ *  getfirstElementChild : <Function>,
+ *  getlastElementChild : <Function>,
+ *  getfirstElementChild : <Function>,
+ *  getnextElementSibling : <Function>,
+ *  getpreviousElementSibling : <Function>,
+ *  insertAfter : <Function>
+ * }*/
+
+if(!this._)this._={};
+
+//attributes property start
+//Save original attributes property if we don't do it
+if(!this._.__ielt8_attributes__)this._.__ielt8_attributes__=this.attributes;
+
+function getAttributes(){
+var tmp=this._.__ielt8_attributes__,res={length:0};
+for(var i=0,l=tmp.length,k=0;i<l;i++)if(tmp[i].specified){
+res[k++]=tmp[i];
+res[tmp[i].name]=tmp[i];
+res.length++;
+}
+return res;
+}
+//attributes property end
+
+getClassList=window._ielt8_Element_proto.getclassList;
+getFirstElementChild=window._ielt8_Element_proto.getfirstElementChild;
+getLastElementChild=window._ielt8_Element_proto.getlastElementChild;
+getFirstElementChild=window._ielt8_Element_proto.getfirstElementChild;
+getNextElementSibling=window._ielt8_Element_proto.getnextElementSibling;
+getPreviousElementSibling=window._ielt8_Element_proto.getpreviousElementSibling;
+
+if(!this.insertAfter)this.insertAfter=window._ielt8_Element_proto.insertAfter;
+</SCRIPT>
+</PUBLIC:COMPONENT>
