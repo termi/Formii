@@ -97,19 +97,34 @@ window.addEventListener("load", function() {
 	padding-left: 70px;
 	border: 3px solid #3377A2;
 }
+.custom-form fieldset {
+	padding-top: 10px;
+	margin-bottom: 10px;
+}
+.custom-form fieldset legend {
+	width: 100%;
+	border-bottom: 1px solid gray;
+}
 </style>
 
 <form class=custom-form>
-	<label>
-		<p>Some text value</p>
-		<input>
-	</label>
-	<label>
-		<p>Some text value</p>
-		<input>
-	</label>
 	<fieldset>
-		<legend>Select Toy</legend>
+		<legend>Text fields</legend>
+		<label>
+			<p>Some text value</p>
+			<input autofocus>
+		</label>
+		<label>
+			<span>Some text</span>
+			<textarea rows="6"></textarea>
+		</label>
+		<label>
+			<p>Some text value</p>
+			<input>
+		</label>
+	</fieldset>
+	<fieldset>
+		<legend>Select Toy (checkbox'es)</legend>
 		<label class="checkbox">
 			<img src="i/some1.jpg">
 			<input type="checkbox">
@@ -124,7 +139,7 @@ window.addEventListener("load", function() {
 		</label>
 	</fieldset>
 	<fieldset>
-		<legend>Choose Toy</legend>
+		<legend>Choose Toy (radiobox'es)</legend>
 		<label class="radio">
 			<img src="i/some1.jpg">
 			<p>some 1</p>
@@ -140,9 +155,15 @@ window.addEventListener("load", function() {
 			<p>some 3</p>
 			<input type="radio" name="oneToy">
 		</label>
-
-
-
+	</fieldset>
+	<fieldset>
+		<legend>select</legend>
+		<label>
+			<span>Some select</span>
+			<select>
+				<option value="1">value 1</option>
+				<option value="2">value 2</option>
+				<option value="3">value 3</option>
 
 
 

@@ -6,11 +6,16 @@ label.select for current input:focus element
 label.checked for input:checked
 
 requared:
- 1. es5-shim
- 2. dom-shim
- 3. ielt9-shim
+ 1. DOM-SHIM
+ 2. toArray function
  
 init:
  if(window.formii)window.formii.init.($$, $A)
  $$ - querySelectorAll
  $A - toArray
+ 
+TODO::
+1. "disabled" support
+2. Class "select" on form and fieldset
+3. placeholder ?
+4. "autofocus: in input support

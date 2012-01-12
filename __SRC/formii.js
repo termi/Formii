@@ -1,67 +1,70 @@
-/*
-formii.js version 0.2
-Делаем формы чуточку лучше
-
-TODO::
-Вешать .select на form и fieldset
-placeholder
+п»ї/*
+formii.js version 0.3
+Р”РµР»Р°РµРј С„РѕСЂРјС‹ С‡СѓС‚РѕС‡РєСѓ Р»СѓС‡С€Рµ
 
 */
 
 ;(function(global) {
 
-var formii = global["formii"] = {
-	elUUID : "_fhj4j6b12",
-	"selectClass" : "select",
-	"checkedClass" : "checked",
-	"labelSelector" : "form label",
-	"inLabelInputSelector" : "input,select,textarea"
-};
+if(global["formii"])return;//prevent second initialisation
 
-var checkRadioAndCheckbox = function(input, label) {
+var elUUID = "_fhj4j6b12";//A some unique value. May be randomString()
+
+var formii = global["formii"] = [
+	"select",
+	"checked",
+	"readonly",//TODO
+	"disabled",//TODO
+	"indeterminate",//TODO
+	"valid",//TODO
+	"invalid",//TODO
+	"",//reserved
+	"form label"
+]
+
+var checkRadioAndCheckbox = function(label) {
+	var input = label.control;
 	if(input.type == 'radio' || input.type == 'checkbox') {
 		var m, a;
 		
-		if(input.type == 'radio' && input.checked) {//Для radio-input'ов
+		if(input.type == 'radio' && input.checked) {//Р”Р»СЏ radio-input'РѕРІ
 			a = input.form[m = '_' + input.name];
 			
-			//снимем предыдущее выделение
-			input.name && a && a != label && a.classList.remove(formii["checkedClass"]);
-			//Сохраним новое выделение в специальной переменной
+			//СЃРЅРёРјРµРј РїСЂРµРґС‹РґСѓС‰РµРµ РІС‹РґРµР»РµРЅРёРµ
+			input.name && a && a != label && a.classList.remove(formii[1]);
+			//РЎРѕС…СЂР°РЅРёРј РЅРѕРІРѕРµ РІС‹РґРµР»РµРЅРёРµ РІ СЃРїРµС†РёР°Р»СЊРЅРѕР№ РїРµСЂРµРјРµРЅРЅРѕР№
 			input.form[m] = label;
 		}
-		label.classList[input.checked ? "add" : "remove"](formii["checkedClass"]);
+		label.classList[input.checked ? "add" : "remove"](formii[1]);
 	}
 }
 
-var listener = formii["listener"] = function(event) {
+var checkLabel = function() {
 	var label = this,
-		input = label["input"],
 		f = label.form,
-		prevLabel = f[formii.elUUID];
+		prevLabel = f[elUUID];
 	
-	/* Если произошло больше событий на один клик (1. По label, 2. На input'е) предотвращяем затирание класса */	
-	if(prevLabel && prevLabel != label)prevLabel.classList.remove(formii["selectClass"]);
+	/* Р•СЃР»Рё РїСЂРѕРёР·РѕС€Р»Рѕ Р±РѕР»СЊС€Рµ СЃРѕР±С‹С‚РёР№ РЅР° РѕРґРёРЅ РєР»РёРє (1. РџРѕ label, 2. РќР° input'Рµ) РїСЂРµРґРѕС‚РІСЂР°С‰СЏРµРј Р·Р°С‚РёСЂР°РЅРёРµ РєР»Р°СЃСЃР° */	
+	if(prevLabel && prevLabel != label)prevLabel.classList.remove(formii[0]);
 	
-	(f[formii.elUUID] = label).classList.add(formii["selectClass"]);
+	(f[elUUID] = label).classList.add(formii[0]);
 	
-	checkRadioAndCheckbox(input, label);
+	checkRadioAndCheckbox(label);
 };
 
 formii["init"] = function(_$$, _toArray, _labelSelector) {
-	formii.$$ = _$$;
-	formii.$A = _toArray;
-	_labelSelector = _labelSelector || formii["labelSelector"] || "";
+	_labelSelector = _labelSelector || formii[8] || "";
 	
-	formii.$A(formii.$$(_labelSelector)).forEach(function(label) {
-		label.addEventListener("touchstart", listener, false);
-		label.addEventListener("touchend", listener, false);
-		label.addEventListener("click", listener, false);
-		label.addEventListener("focus", listener, false);
-		label.addEventListener("DOMFocusIn", listener, false);
+	_toArray(_$$(_labelSelector)).forEach(function(label) {
+		//label.addEventListener("touchstart", checkLabel, false);//realy need?
+		//label.addEventListener("touchend", checkLabel, false);//realy need?
+		label.addEventListener("click", checkLabel, false);
+		label.addEventListener("focus", checkLabel, false);
+		//label.addEventListener("blur", checkLabel, false);
+		label.addEventListener("DOMFocusIn", checkLabel, false);//need in HTML5 browsers
+		//label.addEventListener("DOMFocusOut", checkLabel, false);
 		
-		label["input"] = formii.$$(formii["inLabelInputSelector"], label)[0];
-		checkRadioAndCheckbox(label["input"], label);
+		checkRadioAndCheckbox(label);
 	});	
 };
 
