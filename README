@@ -18,4 +18,5 @@ TODO::
 1. "disabled" support
 2. Class "select" on form and fieldset
 3. placeholder ?
-4. "autofocus: in input support
+4. "autofocus" in input support
+5. External API for init() function
