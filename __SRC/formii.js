@@ -1,5 +1,12 @@
-﻿/*
-formii.js version 0.3
+﻿// ==ClosureCompiler==
+// @compilation_level ADVANCED_OPTIMIZATIONS
+// @warning_level VERBOSE
+// @jscomp_warning missingProperties
+// @output_file_name formii.js
+// @check_types
+// ==/ClosureCompiler==
+/*
+version 0.4
 Делаем формы чуточку лучше
 
 */
@@ -23,7 +30,7 @@ var formii = global["formii"] = [
 ]
 
 var checkRadioAndCheckbox = function(label) {
-	var input = label.control;
+	var input = label["control"];
 	if(input.type == 'radio' || input.type == 'checkbox') {
 		var m, a;
 		
@@ -52,10 +59,10 @@ var checkLabel = function() {
 	checkRadioAndCheckbox(label);
 };
 
-formii["init"] = function(_$$, _toArray, _labelSelector) {
+formii["init"] = function(root, _labelSelector) {
 	_labelSelector = _labelSelector || formii[8] || "";
 	
-	_toArray(_$$(_labelSelector)).forEach(function(label) {
+	Array["from"](root.querySelectorAll(_labelSelector)).forEach(function(label) {
 		//label.addEventListener("touchstart", checkLabel, false);//realy need?
 		//label.addEventListener("touchend", checkLabel, false);//realy need?
 		label.addEventListener("click", checkLabel, false);
