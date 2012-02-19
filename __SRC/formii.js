@@ -13,6 +13,8 @@ version 0.4
 
 ;(function(global) {
 
+"use strict";
+
 if(global["formii"])return;//prevent second initialisation
 
 var elUUID = "_fhj4j6b12";//A some unique value. May be randomString()
@@ -31,7 +33,7 @@ var formii = global["formii"] = [
 
 var checkRadioAndCheckbox = function(label) {
 	var input = label["control"];
-	if(input.type == 'radio' || input.type == 'checkbox') {
+	if(input && (input.type == 'radio' || input.type == 'checkbox')) {
 		var m, a;
 		
 		if(input.type == 'radio' && input.checked) {//Для radio-input'ов
@@ -67,6 +69,7 @@ formii["init"] = function(root, _labelSelector) {
 		//label.addEventListener("touchend", checkLabel, false);//realy need?
 		label.addEventListener("click", checkLabel, false);
 		label.addEventListener("focus", checkLabel, false);
+		label.addEventListener("focusin", checkLabel, false);//IE sometimes don't fire `focus`
 		//label.addEventListener("blur", checkLabel, false);
 		label.addEventListener("DOMFocusIn", checkLabel, false);//need in HTML5 browsers
 		//label.addEventListener("DOMFocusOut", checkLabel, false);

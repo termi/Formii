@@ -7,7 +7,7 @@ __Status__: Work in progress...
  - label.select for current input:focus element
  - label.checked for input:checked
 
-## requared:
+## Requared
  1. DOM-SHIM
  
 ## init

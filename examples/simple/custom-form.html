@@ -5,19 +5,19 @@
 <!--[if lt IE 9]>
 <script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
 <![endif]-->
-<script src="../libs/a.js"></script><!-- es5-shim and $$, $A(toArray) functions -->
+<script src="https://raw.github.com/termi/ES5-DOM-SHIM/master/__COMPILE/a.js"></script><!-- es5-shim and $$, $A(toArray) functions -->
 <!--[if lt IE 8]>
 <script src="../libs/a.ielt8.js"></script>
 <![endif]-->
 
-<script src="../__SRC/formii.js"></script>
+<script src="../../__SRC/formii.js"></script>
 
 <link rel="stylesheet" href="css/a.css" />
 
 <script>
 
 window.addEventListener("load", function() {
-	formii.init($$, $A);
+	formii.init(document);
 }, false);
 </script>
 
